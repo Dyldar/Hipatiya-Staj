@@ -3,6 +3,7 @@ package com.hipatiya.staj.controller;
 import com.hipatiya.staj.model.Product;
 import com.hipatiya.staj.model.ProductView;
 import com.hipatiya.staj.service.ProductService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -45,12 +46,12 @@ public class ProductController {
     }
 
     @PostMapping
-    public Product create(@RequestBody Product product){
+    public Product create(@Valid @RequestBody Product product){
         return service.createProduct(product);
     }
 
     @PutMapping("/{id}")
-    public Product update(@PathVariable Long id, @RequestBody Product updatedProduct){
+    public Product update(@Valid @PathVariable Long id, @RequestBody Product updatedProduct){
         return service.updateProduct(id, updatedProduct)
                 .orElseThrow(() -> new RuntimeException("Product not Found"));
     }

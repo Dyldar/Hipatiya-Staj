@@ -1,8 +1,10 @@
 package com.hipatiya.staj.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jdk.jfr.Relational;
-//import org.springframework.data.annotation.Id; OMG UGLYYYYYYYYY
 
 @Entity
 @Table(name="product", schema="e_commerce")
@@ -12,11 +14,14 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Name cannot be blank")
     @Column(name = "name")
     private String name;
 
+    @NotNull(message = "Price cannot be null")
+    @Min(value = 1)
     @Column(name= "price")
-    private Integer price;
+    private float price;
 
     public Product(){}
 
@@ -34,10 +39,10 @@ public class Product {
         this.name = name;
     }
 
-    public Integer getPrice() {
+    public float getPrice() {
         return price;
     }
-    public void setPrice(Integer price) {
+    public void setPrice(float price) {
         this.price = price;
     }
 
