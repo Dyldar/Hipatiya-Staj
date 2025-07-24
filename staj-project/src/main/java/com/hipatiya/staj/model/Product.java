@@ -21,11 +21,11 @@ public class Product {
     @NotNull(message = "Price cannot be null")
     @Min(value = 1)
     @Column(name= "price")
-    private float price;
+    private double price;
 
     public Product(){}
 
-    public Product (String name, Integer price){
+    public Product (String name, double price){
         this.name=name;
         this.price=price;
     }
@@ -39,10 +39,10 @@ public class Product {
         this.name = name;
     }
 
-    public float getPrice() {
+    public double getPrice() {
         return price;
     }
-    public void setPrice(float price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 

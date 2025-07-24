@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/productdb_test  #TEST database
+    username: postgres
+    password: 12321.
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop  # Single use, discards after use
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        default_schema: e_commerce_test  #(optional) test schema
+
+logging:
+  level:
+    root: WARN  # test log minimising
